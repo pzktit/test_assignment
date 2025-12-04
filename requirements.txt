@@ -1,0 +1,22 @@
+# --- Kryptografia wysokiego poziomu ---
+cryptography
+pycryptodome
+pynacl
+
+# --- Matematyka, liczby pierwsze, algebra ---
+sympy
+gmpy2
+
+# --- Narzędzia numeryczne i naukowe ---
+numpy
+scipy
+
+# --- Wizualizacja ---
+matplotlib
+
+# --- Jupyter / Notebook ---
+ipykernel
+ipywidgets
+
+# --- Narzędzia developerskie ---
+pytest
