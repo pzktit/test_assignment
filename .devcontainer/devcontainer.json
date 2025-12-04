@@ -1,13 +1,9 @@
 {
-  "name": "crypto-labs",
+  "name": "CryptCourse DevContainer",
 
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  "image": "ghcr.io/pzktit/crypt-course:main",
 
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {}
-  },
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
   "customizations": {
     "vscode": {
@@ -19,16 +15,16 @@
         "ms-toolsai.jupyter-renderers"
       ],
       "settings": {
-        "python.defaultInterpreterPath": "/workspaces/${containerWorkspaceFolderBasename}/.venv/bin/python"
+        "python.defaultInterpreterPath": "/usr/local/bin/python3",
+        "jupyter.jupyterServerType": "local",
+        "notebook.formatOnSave.enabled": true
       }
     }
   },
 
-  "remoteEnv": {
-    "PATH": "/home/vscode/.local/bin:${PATH}"
-  },
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
 
-  "postCreateCommand": "bash -lc \"curl -LsSf https://astral.sh/uv/install.sh | sh && ~/.local/bin/uv venv && source .venv/bin/activate && ~/.local/bin/uv pip install -r requirements.txt && python -m ipykernel install --user --name crypto-env --display-name 'Python (crypto)'\"",
-
-  "forwardPorts": [8888, 5000, 8000]
+  "postCreateCommand": "uv pip install --link-mode=copy -r requirements.txt && echo 'Devcontainer ready ✔'"
 }
