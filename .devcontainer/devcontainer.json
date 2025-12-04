@@ -28,19 +28,7 @@
     "PATH": "/home/vscode/.local/bin:${PATH}"
   },
 
-  "postCreateCommand": [
-    // Install uv as vscode
-    "curl -LsSf https://astral.sh/uv/install.sh | sh",
-
-    // Create virtual environment
-    "~/.local/bin/uv venv",
-
-    // Install dependencies
-    "source .venv/bin/activate && ~/.local/bin/uv pip install -r requirements.txt",
-
-    // Register Jupyter kernel
-    "source .venv/bin/activate && python -m ipykernel install --user --name crypto-env --display-name 'Python (crypto)'"
-  ],
+  "postCreateCommand": "bash -lc \"curl -LsSf https://astral.sh/uv/install.sh | sh && ~/.local/bin/uv venv && source .venv/bin/activate && ~/.local/bin/uv pip install -r requirements.txt && python -m ipykernel install --user --name crypto-env --display-name 'Python (crypto)'\"",
 
   "forwardPorts": [8888, 5000, 8000]
 }
