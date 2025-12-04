@@ -24,7 +24,7 @@
     }
   },
 
-  "containerEnv": {
+  "remoteEnv": {
     "PATH": "/home/vscode/.local/bin:${PATH}"
   },
 
