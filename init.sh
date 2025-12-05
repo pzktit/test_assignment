@@ -28,7 +28,7 @@ echo "⚙️ Activating .venv"
 source .venv/bin/activate
 
 # 4. Install dependencies
-if [ -f requirements.txt ]; then
+if [ -f supporting_packages.txt ]; then
     echo "📚 Installing dependencies"
     uv pip install -r supporting_packages.txt
 fi
