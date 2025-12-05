@@ -1,0 +1,32 @@
+{
+  "name": "CryptCourse DevContainer",
+
+  "image": "ghcr.io/pzktit/crypt-course:main",
+
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/workspaces/${localWorkspaceFolderBasename}/.venv/bin/python",
+        "jupyter.jupyterServerType": "local",
+        "notebook.formatOnSave.enabled": true
+      }
+    }
+  },
+
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
+
+  "postCreateCommand": "if [ ! -d .venv ]; then uv venv .venv; fi && uv pip install --link-mode=copy -r requirements.txt && echo 'Devcontainer ready ✔'",
+  
+  "postStartCommand": "echo 'source .venv/bin/activate' >> /home/vscode/.bashrc"
+}
