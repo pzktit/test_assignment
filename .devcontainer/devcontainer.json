@@ -26,5 +26,5 @@
     "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
   ],
 
-  "postCreateCommand": "uv pip install --link-mode=copy -r requirements.txt && echo 'Devcontainer ready ✔'"
+  "postCreateCommand": "if [ ! -d .venv ]; then uv venv .venv; fi && uv pip install --link-mode=copy -r requirements.txt && echo 'Devcontainer ready ✔'"
 }
