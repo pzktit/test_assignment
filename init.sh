@@ -30,10 +30,18 @@ source .venv/bin/activate
 # 4. Install dependencies
 if [ -f requirements.txt ]; then
     echo "📚 Installing dependencies"
-    uv pip install --link-mode=copy -r requirements.txt
+    uv pip install -r supporting_packages.txt
 fi
 
-# 5. Register Jupyter kernel
-python -m ipykernel install --user --name cryptopy --display-name "Python (CryptCourse)"
+# 6️⃣ Add auto-activation of .venv to ~/.bashrc if not already present
+
+VENV_ACTIVATE_LINE="source $(pwd)/.venv/bin/activate"
+
+if ! grep -Fxq "$VENV_ACTIVATE_LINE" "$HOME/.bashrc"; then
+    echo "$VENV_ACTIVATE_LINE" >> "$HOME/.bashrc"
+    echo "🔗 Added automatic .venv activation to ~/.bashrc"
+else
+    echo "ℹ️ .venv activation already present in ~/.bashrc — skipping"
+fi
 
 echo "🎉 Setup complete!"

@@ -1,3 +1,6 @@
+# Jupyter in VS Code
+ipykernel
+
 # --- Kryptografia wysokiego poziomu ---
 cryptography
 pycryptodome
