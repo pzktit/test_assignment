@@ -1,0 +1,16 @@
+[project]
+name = "labdevenv"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pytest",
+    "ipykernel",
+    "nbformat",
+    "cryptography",
+    "pycryptodome",
+    "qiskit",
+    "qiskit-aer",
+    "qiskit-ibm-runtime"
+]
